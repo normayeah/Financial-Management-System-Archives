@@ -1,0 +1,53 @@
+#SpringBoot使用一个全局的配置文件，修改SpringBoot自动配置的默认值
+# Tomcat
+server:
+  #服务器配置
+    tomcat:
+        uri-encoding: UTF-8
+        #字符编码方式
+    port: 8080 #端口
+    servlet:
+      #服务端小程序，网页服务器和数据库之间的中间层
+        context-path: /springbootridhd
+        #项目路径，构成网页地址的一部分
+
+spring:
+  #spring配置
+    datasource:
+      #数据库配置
+        driverClassName: com.mysql.cj.jdbc.Driver #数据库驱动程序名称
+        url: jdbc:mysql://127.0.0.1:3306/springbootridhd?useUnicode=true&characterEncoding=utf-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        username: root
+        password: 123456
+    servlet:
+      multipart:
+        #指定上传文件大小
+        max-file-size: 10MB
+        max-request-size: 10MB
+
+#mybatis
+mybatis-plus:
+  #应用程序映射器位置；映射配置文件
+  mapper-locations: classpath*:mapper/*.xml #不仅在class路径，还在jar文件中（class路径）进行查找。
+  #实体扫描，多个package用逗号或者分号分隔；搜索指定包别名
+  typeAliasesPackage: com.entity
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 1
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 2
+    #驼峰下划线转换
+    db-column-underline: true
+    #刷新mapper，调试神器
+    refresh-mapper: true
+    #逻辑删除配置
+    logic-delete-value: -1
+    logic-not-delete-value: 0
+    #自定义SQL注入器
+    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    #springboot 项目mybatis plus 设置 jdbcTypeForNull (oracle数据库需配置JdbcType.NULL, 默认是Other)
+    jdbc-type-for-null: 'null'

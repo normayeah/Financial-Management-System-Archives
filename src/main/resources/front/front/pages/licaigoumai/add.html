@@ -1,0 +1,337 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>boo02</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" type="image/x-icon" href="../../assetsimages/x-icon/agricul.png">
+		<link rel="stylesheet" href="../../assets/css/relys/animate.css">
+		<link rel="stylesheet" href="../../assets/css/relys/bootstrap.min.css">
+		<link rel="stylesheet" href="../../assets/css/relys/all.min.css">
+		<link rel="stylesheet" href="../../assets/css/relys/icofont.min.css">
+		<link rel="stylesheet" href="../../assets/css/relys/lightcase.css">
+		<link rel="stylesheet" href="../../assets/css/relys/swiper.min.css">
+		<link rel="stylesheet" href="../../assets/css/relys/style.css">
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" href="../../layui/css/layui.css">
+		<style type="text/css">
+			.layui-form-label{
+				width: 100px;
+			}
+			.form-box{
+				padding-top: 90px;
+				padding-bottom: 20px;
+				width: 100%;
+				background-color: #f8f8f8;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.form-box .form-content{
+				width: 50%;
+				height: auto;
+				background: #FFF;
+				padding: 40px 10%;
+				position: relative;
+			}
+			.form-box .form-content .close-btn{
+				position: absolute;
+				width: auto!important;
+				padding: 10px;
+				background: #CCCCCC!important;
+				color: #444;
+				top: 40px;
+				right: 10%;
+			}
+			.form-box .form-content .close-btn:hover{
+				width: auto!important;
+				padding: 10px;
+				background: #CCCCCC!important;
+			}
+			.form-box .form-content h3{
+				width: 100%;
+				text-align: center;
+				margin-bottom: 40px;
+			}
+			.form-box .form-content .input-item{
+				margin-bottom: 20px;
+				display: flex;
+			}
+			.form-box .form-content .input-item input{
+				height: 50px;
+				line-height: 50px;
+				flex: 1;
+			}
+			.form-box .form-content .input-item .input-name{
+				padding: 0;
+				width: 100px;
+				height: 50px;
+				line-height: 50px;
+			}
+			.form-box .form-content .input-item img{
+				width: 150px;
+				height: 150px;
+				border-radius: 10px;
+				margin-left: 20px;
+				object-fit: cover;
+			}
+			.form-box .form-content button{
+				background: #FE4847;
+				color: #fff;
+				border: 0;
+				width: 100%;
+			}
+			.form-box .form-content button:hover {
+			    background: #292929;
+			    color: #fff;
+			}
+			.layui-upload-img{
+			    width: 100px;
+			    height: 100px;
+			    object-fit: cover;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="form-box layui-form" lay-filter="layform">
+				<div class="form-control form-content">
+					<h3>理财购买填写</h3>
+					<div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">产品名称</label>
+							<div class="layui-input-block">
+							  <input v-model="detail.chanpinmingcheng" type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入产品名称" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">类型</label>
+							<div class="layui-input-block">
+							  <input v-model="detail.leixing" type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入类型" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">产品价格</label>
+							<div class="layui-input-block">
+							  <input v-model="detail.chanpinjiage" type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入产品价格" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">购买日期</label>
+							<div class="layui-input-block">
+								<input type="text" name="" placeholder="请输入购买日期" autocomplete="off" class="layui-input" id="datepicker">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">昵称</label>
+							<div class="layui-input-block">
+							  <input v-model="detail.nicheng" type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入昵称" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">姓名</label>
+							<div class="layui-input-block">
+							  <input v-model="detail.xingming" type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入姓名" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">手机</label>
+							<div class="layui-input-block">
+							  <input v-model="detail.shouji" type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入手机" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">身份证</label>
+							<div class="layui-input-block">
+							  <input v-model="detail.shenfenzheng" type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入身份证" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">备注</label>
+							<div class="layui-input-block">
+							  <input v-model="detail.beizhu" type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入备注" class="layui-input">
+							</div>
+						</div>
+					</div>
+					<button style="margin-bottom: 20px;" type="button" class="btn btn-default" @click="onConfirmTap">提交</button>
+				</div>
+			</div>
+		</div>
+		<script src="../../assets/js/relys/jquery.js"></script>
+		<script src="../../assets/js/relys/vue.min.js"></script>
+		<script src="../../assets/js/api/api.js"></script>
+		<script src="../../assets/js/api/tplist.js"></script>
+		<script src="../../assets/js/api/defaultuser.js"></script>
+		<script src="../../assets/js/relys/utils.js"></script>
+<script src="../../assets/js/relys/storage.js"></script>
+		<script src="../../layui/layui.js"></script>
+		<div id="script"></div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: "#app",
+				data: {
+					crosstable: "",
+					crosstableobj: {},
+					detail: {
+						chanpinmingcheng: "",
+						leixing: "",
+						chanpinjiage: "",
+						goumairiqi: "",
+						nicheng: "",
+						xingming: "",
+						shouji: "",
+						shenfenzheng: "",
+						beizhu: "",
+						sfsh: "",
+						shhf: "",
+						ispay: "",
+					},
+				},
+				computed: {
+				},
+				updated() {
+					layui.form.render('select','layform');
+				},
+				async created() {
+					var id = getParam('id')
+					var tablename = getParam('tablename')
+					this.crosstable = tablename
+					if(!id){
+						var cross = JSON.parse(localStorage.getItem("crossObj"))
+						this.crosstableobj = cross
+						for(var key in cross){
+							if("chanpinmingcheng" == key){
+								this.detail[key] = cross[key]
+							}
+							if("leixing" == key){
+								this.detail[key] = cross[key]
+							}
+							if("chanpinjiage" == key){
+								this.detail[key] = cross[key]
+							}
+							if("goumairiqi" == key){
+								this.detail[key] = cross[key]
+							}
+							if("nicheng" == key){
+								this.detail[key] = cross[key]
+							}
+							if("xingming" == key){
+								this.detail[key] = cross[key]
+							}
+							if("shouji" == key){
+								this.detail[key] = cross[key]
+							}
+							if("shenfenzheng" == key){
+								this.detail[key] = cross[key]
+							}
+							if("beizhu" == key){
+								this.detail[key] = cross[key]
+							}
+							if("sfsh" == key){
+								this.detail[key] = cross[key]
+							}
+							if("shhf" == key){
+								this.detail[key] = cross[key]
+							}
+							if("ispay" == key){
+								this.detail[key] = cross[key]
+							}
+						}
+					}else{
+						await this.getDetail(id, tablename)
+					}
+					
+					// 获取用户信息
+					var user = localStorage.getItem("sessionTable")
+					session(`${user}`, (data)=>{
+						if (data && data.code === 0) {
+							var json = data.data;
+							this.detail.nicheng = json.nicheng
+							this.detail.xingming = json.xingming
+							this.detail.shouji = json.shouji
+							this.detail.shenfenzheng = json.shenfenzheng
+						}
+					})
+
+				},
+				methods: {
+					onPageTap(url) {
+						window.location.href = url
+					},
+					updateTap(tablename){
+						return new Promise((resolve) => {
+							updateFun(tablename, data, (res) => {
+								if(res&&res.code==0){
+									console.log("更新成功")
+									resolve(res)
+								}
+							})
+						})
+						
+					},
+					onConfirmTap(){
+						this.detail.goumairiqi = $("#datepicker").val()
+						addFun("licaigoumai", this.detail, (res) => {
+							if(res&&res.code==0){
+								alert("提交成功")
+							}
+						})
+					},
+
+
+					getDetail(tablename, id) {
+						return new Promise((resolve) => {
+						goodsInfo(tablename, id, (res) => {
+							this.detail = res.data
+							resolve(res)
+						})
+						})
+					}
+				}
+			})
+			$(function(){
+
+
+
+
+
+
+				layui.use('laydate', function(){
+					var laydate = layui.laydate;
+					// 日期选择器
+					laydate.render({
+						elem: '#datepicker',
+						type: 'date'
+					});
+				});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				layui.use(['form','layedit'], function(){
+					var form = layui.form,
+						layedit = layui.layedit,
+						$ = layui.jquery,
+						layer = layui.layer;
+				        
+				});
+			});
+		</script>
+	</body>
+</html>
